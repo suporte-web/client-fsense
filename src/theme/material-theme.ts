@@ -43,27 +43,27 @@ export const materialTheme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: 10,
   },
   typography: {
-    fontFamily: "'Inter', Arial, Helvetica, sans-serif",
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontFamily: "'Space Grotesk', 'Inter', sans-serif",
-      fontWeight: 800,
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 700,
       letterSpacing: 0,
     },
     h2: {
-      fontFamily: "'Space Grotesk', 'Inter', sans-serif",
-      fontWeight: 800,
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 700,
       letterSpacing: 0,
     },
     h3: {
-      fontFamily: "'Space Grotesk', 'Inter', sans-serif",
-      fontWeight: 800,
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 700,
       letterSpacing: 0,
     },
     button: {
-      fontWeight: 800,
+      fontWeight: 700,
       textTransform: 'none',
     },
   },
@@ -82,7 +82,7 @@ export const materialTheme = createTheme({
       styleOverrides: {
         root: {
           border: '1px solid #E2E8F0',
-          borderRadius: 8,
+          borderRadius: 10,
           boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)',
           backgroundImage: 'none',
         },
@@ -91,7 +91,7 @@ export const materialTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 10,
           boxShadow: 'none',
           '&.MuiButton-containedPrimary': {
             boxShadow: '0 8px 18px rgba(234, 88, 12, 0.20)',
@@ -120,7 +120,7 @@ export const materialTheme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 10,
           backgroundColor: '#FFFFFF',
           '&:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: '#94A3B8',

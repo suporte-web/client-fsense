@@ -252,6 +252,8 @@ export function TeamsList({
     <Card
       sx={{
         ...dashboardPanelSx,
+        borderRadius: '12px',
+        boxShadow: 'none',
         p: { xs: 2, md: 2.5 },
       }}
     >
@@ -274,9 +276,14 @@ export function TeamsList({
           <Box
             sx={{
               ...dashboardIconBoxSx,
+              width: 36,
+              height: 36,
+              borderRadius: '10px',
+              bgcolor: '#FFEEE6',
+              color: '#FF4B0B',
             }}
           >
-            <GroupsIcon sx={{ fontSize: 21 }} />
+            <GroupsIcon sx={{ fontSize: 20 }} />
           </Box>
 
           <Box>
@@ -286,7 +293,7 @@ export function TeamsList({
                 fontFamily: tokens.font.display,
                 color: tokens.color.ink,
                 fontSize: 18,
-                fontWeight: 800,
+                fontWeight: 700,
               }}
             >
               Ranking por equipe
@@ -295,7 +302,7 @@ export function TeamsList({
             <Typography
               sx={{
                 mt: 0.35,
-                color: tokens.color.muted,
+                color: '#4D4D4D',
                 fontSize: 13,
               }}
             >
@@ -325,13 +332,13 @@ export function TeamsList({
               sx={{
                 p: 1.5,
                 border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: 1,
+                borderColor: '#E0E0E0',
+                borderRadius: '10px',
                 bgcolor: '#ffffff',
                 transition: 'background-color 160ms ease, border-color 160ms ease',
                 '&:hover': {
-                  bgcolor: '#fff7ed',
-                  borderColor: '#fed7aa',
+                  bgcolor: '#FFF7ED',
+                  borderColor: '#FFCCBC',
                 },
               }}
             >
@@ -349,7 +356,7 @@ export function TeamsList({
                     minWidth: 0,
                     color: tokens.color.ink,
                     fontSize: 13.5,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
@@ -364,16 +371,16 @@ export function TeamsList({
                     px: 1.1,
                     py: 0.45,
                     borderRadius: 999,
-                    bgcolor: accent.bg,
-                    border: '1px solid #fed7aa',
+                    bgcolor: '#FFF7ED',
+                    border: '1px solid #FFCCBC',
                   }}
                 >
                   <Typography
                     sx={{
                       fontFamily: tokens.font.mono,
-                      color: '#c2410c',
+                      color: '#F45100',
                       fontSize: 12.5,
-                      fontWeight: 800,
+                      fontWeight: 700,
                     }}
                   >
                     {idlePercent}%
@@ -401,6 +408,14 @@ export function TeamsList({
               <LinearProgress
                 variant="determinate"
                 value={idlePercent}
+                sx={{
+                  height: 6,
+                  borderRadius: 999,
+                  bgcolor: '#FFEDD5',
+                  '& .MuiLinearProgress-bar': {
+                    bgcolor: '#FF6D00',
+                  },
+                }}
               />
 
               <Box
@@ -420,9 +435,9 @@ export function TeamsList({
                       label={`${application} - ${formatDuration(durationMs)}`}
                       sx={{
                         maxWidth: '100%',
-                        bgcolor: '#fff7ed',
-                        border: '1px solid #fed7aa',
-                        color: '#9a3412',
+                        bgcolor: '#FFF7ED',
+                        border: '1px solid #FFCCBC',
+                        color: '#F45100',
                         fontSize: 11,
                         fontWeight: 700,
                         '& .MuiChip-label': {

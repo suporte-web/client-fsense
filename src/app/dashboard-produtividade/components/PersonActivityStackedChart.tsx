@@ -3,7 +3,8 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Box, Card, IconButton, Typography } from '@mui/material';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import { Box, Card, Chip, IconButton, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
 import {
   ActivityItem,
@@ -47,14 +48,57 @@ const segmentDefs: Array<{
   label: string;
   color: string;
   textColor: string;
+  borderColor: string;
 }> = [
-  { key: 'work', label: 'Uso de trabalho', color: '#84C45A', textColor: '#ffffff' },
-  { key: 'personal', label: 'Uso pessoal', color: '#93C5FD', textColor: '#1E3A8A' },
-  { key: 'unapproved', label: 'Uso pessoal nao aprovado', color: '#F87171', textColor: '#7F1D1D' },
-  { key: 'unclassified', label: 'Nao classificado', color: '#B8B8B8', textColor: '#374151' },
-  { key: 'locked', label: 'Estacao bloqueada', color: '#FACC15', textColor: '#713F12' },
-  { key: 'suspended', label: 'Suspenso', color: '#FDE68A', textColor: '#713F12' },
-  { key: 'idle', label: 'Tempo ocioso', color: '#FEF3C7', textColor: '#854D0E' },
+  {
+    key: 'work',
+    label: 'Uso de trabalho',
+    color: tokens.color.success.bar,
+    textColor: '#ffffff',
+    borderColor: tokens.color.success.border,
+  },
+  {
+    key: 'personal',
+    label: 'Uso pessoal',
+    color: tokens.color.info.bar,
+    textColor: '#ffffff',
+    borderColor: tokens.color.info.border,
+  },
+  {
+    key: 'unapproved',
+    label: 'Uso pessoal nao aprovado',
+    color: tokens.color.danger.bar,
+    textColor: '#ffffff',
+    borderColor: tokens.color.danger.border,
+  },
+  {
+    key: 'unclassified',
+    label: 'Nao classificado',
+    color: tokens.color.neutral.bar,
+    textColor: '#ffffff',
+    borderColor: tokens.color.neutral.border,
+  },
+  {
+    key: 'locked',
+    label: 'Estacao bloqueada',
+    color: tokens.color.warning.bar,
+    textColor: '#713F12',
+    borderColor: tokens.color.warning.border,
+  },
+  {
+    key: 'suspended',
+    label: 'Suspenso',
+    color: '#FDE68A',
+    textColor: '#713F12',
+    borderColor: tokens.color.warning.border,
+  },
+  {
+    key: 'idle',
+    label: 'Tempo ocioso',
+    color: tokens.color.primary.soft,
+    textColor: tokens.color.primary.dark,
+    borderColor: tokens.color.primary.border,
+  },
 ];
 
 const emptySegments = (): Record<SegmentKey, number> => ({
@@ -277,6 +321,9 @@ export function PersonActivityStackedChart({
     <Card
       sx={{
         ...dashboardPanelSx,
+        borderRadius: '12px',
+        borderLeft: '4px solid #F57C00',
+        boxShadow: 'none',
         p: { xs: 2, md: 2.5 },
       }}
     >
@@ -289,26 +336,75 @@ export function PersonActivityStackedChart({
           gap: 2,
         }}
       >
-        <Box>
-          <Typography
-            component="h2"
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+            minWidth: 0,
+          }}
+        >
+          <Box
             sx={{
-              fontFamily: tokens.font.display,
-              color: tokens.color.ink,
-              fontSize: 18,
-              fontWeight: 800,
+              width: 54,
+              height: 54,
+              borderRadius: '10px',
+              bgcolor: '#FFEEE6',
+              color: '#FF4B0B',
+              display: 'grid',
+              placeItems: 'center',
+              flexShrink: 0,
             }}
           >
-            Atividades de Pessoa
-          </Typography>
+            <QueryStatsIcon sx={{ fontSize: 24 }} />
+          </Box>
+
+          <Box sx={{ minWidth: 0 }}>
+            <Typography
+              component="h2"
+              sx={{
+                fontFamily: tokens.font.display,
+                color: tokens.color.ink,
+                fontSize: 18,
+                fontWeight: 700,
+              }}
+            >
+              Atividades de Pessoa
+            </Typography>
+
+            <Typography
+              sx={{
+                mt: 0.35,
+                color: '#4D4D4D',
+                fontSize: 13,
+              }}
+            >
+              Tempo por categoria agrupado por colaborador.
+            </Typography>
+          </Box>
         </Box>
 
-        <ExpandMoreIcon sx={{ color: tokens.color.muted, fontSize: 22 }} />
+        <Chip
+          icon={<ExpandMoreIcon sx={{ fontSize: '17px !important' }} />}
+          label={`${chartData.length} pessoa${chartData.length === 1 ? '' : 's'}`}
+          size="small"
+          variant="outlined"
+          sx={{
+            height: 30,
+            bgcolor: '#FFEEE6',
+            borderColor: '#FFD8C8',
+            color: '#FF4B0B',
+            fontWeight: 700,
+            '& .MuiChip-icon': {
+              color: '#FF4B0B',
+            },
+          }}
+        />
       </Box>
 
       <Box
         sx={{
-          borderTop: '1px solid #f3f4f6',
+          borderTop: '1px solid #E0E0E0',
           borderColor: 'divider',
           pt: 2,
         }}
@@ -336,7 +432,7 @@ export function PersonActivityStackedChart({
               textAlign: 'center',
               color: tokens.color.ink,
               fontSize: 13,
-              fontWeight: 800,
+              fontWeight: 700,
             }}
           >
             Página {safePage + 1}
@@ -360,6 +456,10 @@ export function PersonActivityStackedChart({
               display: 'grid',
               gridTemplateColumns: '44px 1fr',
               columnGap: 1.5,
+              p: 2,
+              border: '1px solid #E0E0E0',
+              borderRadius: '12px',
+              bgcolor: '#FFFFFF',
             }}
           >
             <Box
@@ -369,6 +469,7 @@ export function PersonActivityStackedChart({
                 color: tokens.color.muted,
                 fontFamily: tokens.font.mono,
                 fontSize: 12,
+                pr: 0.5,
               }}
             >
               {yTicks.map((tick) => (
@@ -411,7 +512,9 @@ export function PersonActivityStackedChart({
                   position: 'relative',
                   height: chartHeight,
                   pb: 1,
-                  borderBottom: `1px solid ${tokens.color.line}`,
+                  borderBottom: '1px solid #DADADA',
+                  bgcolor: '#ffffff',
+                  borderRadius: '10px',
                 }}
               >
                 {yTicks.map((tick) => (
@@ -422,7 +525,7 @@ export function PersonActivityStackedChart({
                       left: 0,
                       right: 0,
                       top: `${(1 - tick) * 100}%`,
-                      borderTop: `1px solid ${tick === 0 ? tokens.color.line : '#edf0f4'}`,
+                      borderTop: `1px solid ${tick === 0 ? '#DADADA' : '#EFEFEF'}`,
                     }}
                   />
                 ))}
@@ -460,7 +563,7 @@ export function PersonActivityStackedChart({
                             color: tokens.color.ink,
                             fontFamily: tokens.font.mono,
                             fontSize: 12,
-                            fontWeight: 800,
+                            fontWeight: 700,
                           }}
                         >
                           {formatDuration(item.totalMs)}
@@ -474,9 +577,9 @@ export function PersonActivityStackedChart({
                             minHeight: 3,
                             display: 'flex',
                             flexDirection: 'column-reverse',
-                            borderRadius: '3px 3px 0 0',
+                            borderRadius: '8px 8px 0 0',
                             overflow: 'hidden',
-                            boxShadow: 'inset 0 0 0 1px rgba(15, 23, 42, 0.05)',
+                            boxShadow: 'inset 0 0 0 1px rgba(0, 0, 0, 0.08)',
                           }}
                         >
                           {segmentDefs.map((segment) => {
@@ -546,7 +649,7 @@ export function PersonActivityStackedChart({
                       sx={{
                         color: tokens.color.ink,
                         fontSize: 12,
-                        fontWeight: 800,
+                        fontWeight: 700,
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         whiteSpace: 'nowrap',
@@ -579,31 +682,38 @@ export function PersonActivityStackedChart({
             display: 'flex',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            gap: 1.5,
+            gap: 1,
           }}
         >
           {segmentDefs.map((segment) => (
-            <Box
+            <Chip
               key={segment.key}
+              size="small"
+              variant="outlined"
+              label={segment.label}
+              icon={
+                <Box
+                  sx={{
+                    width: 11,
+                    height: 11,
+                    borderRadius: 0.6,
+                    bgcolor: segment.color,
+                    border: `1px solid ${segment.borderColor}`,
+                  }}
+                />
+              }
               sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 0.7,
+                height: 28,
+                bgcolor: '#ffffff',
+                borderColor: segment.borderColor,
+                color: '#4D4D4D',
+                fontSize: 12,
+                fontWeight: 700,
+                '& .MuiChip-icon': {
+                  ml: 1,
+                },
               }}
-            >
-              <Box
-                sx={{
-                  width: 13,
-                  height: 13,
-                  borderRadius: 0.5,
-                  bgcolor: segment.color,
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
-                }}
-              />
-              <Typography sx={{ color: tokens.color.ink, fontSize: 12.5, fontWeight: 700 }}>
-                {segment.label}
-              </Typography>
-            </Box>
+            />
           ))}
         </Box>
 
@@ -612,13 +722,13 @@ export function PersonActivityStackedChart({
             sx={{
               mt: 2,
               p: 3,
-              border: '1px dashed #fdba74',
-              borderRadius: 1,
-              bgcolor: '#fff7ed',
+              border: '1px dashed #FFD8C8',
+              borderRadius: '12px',
+              bgcolor: '#FFEEE6',
               textAlign: 'center',
             }}
           >
-            <Typography sx={{ color: tokens.color.ink, fontWeight: 800, fontSize: 14 }}>
+            <Typography sx={{ color: tokens.color.ink, fontWeight: 700, fontSize: 14 }}>
               Nenhuma atividade para montar o grafico
             </Typography>
             <Typography sx={{ mt: 0.5, color: tokens.color.muted, fontSize: 13 }}>

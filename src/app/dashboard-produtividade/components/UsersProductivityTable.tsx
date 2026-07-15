@@ -80,10 +80,11 @@ function getUserVolume(user: UserProductivity) {
 
 const headCellSx = {
   fontFamily: tokens.font.display,
-  fontWeight: 800,
+  fontWeight: 700,
   fontSize: 12.5,
-  color: '#9a3412',
-  borderColor: '#fed7aa',
+  color: '#9A3412',
+  borderColor: '#FED7AA',
+  bgcolor: '#FFF7ED',
   whiteSpace: 'nowrap',
 };
 
@@ -100,6 +101,9 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
     <Card
       sx={{
         ...dashboardPanelSx,
+        borderRadius: '12px',
+        borderLeft: '4px solid #FF4B0B',
+        boxShadow: 'none',
         p: { xs: 2, md: 2.5 },
       }}
     >
@@ -123,9 +127,14 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
           <Box
             sx={{
               ...dashboardIconBoxSx,
+              width: 36,
+              height: 36,
+              borderRadius: '10px',
+              bgcolor: '#FFEEE6',
+              color: '#FF4B0B',
             }}
           >
-            <TimelineIcon sx={{ fontSize: 21 }} />
+            <TimelineIcon sx={{ fontSize: 20 }} />
           </Box>
 
           <Box>
@@ -135,7 +144,7 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
                 fontFamily: tokens.font.display,
                 color: tokens.color.ink,
                 fontSize: 18,
-                fontWeight: 800,
+                fontWeight: 700,
               }}
             >
               Produtividade por usuário
@@ -144,7 +153,7 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
             <Typography
               sx={{
                 mt: 0.35,
-                color: tokens.color.muted,
+                color: '#4D4D4D',
                 fontSize: 13,
               }}
             >
@@ -159,10 +168,11 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
           size="small"
           sx={{
             height: 30,
-            bgcolor: '#fff7ed',
-            color: '#c2410c',
-            border: '1px solid #fed7aa',
+            bgcolor: '#FFEEE6',
+            color: '#FF4B0B',
+            border: '1px solid #FFD8C8',
             fontSize: 12,
+            fontWeight: 700,
             '& .MuiChip-label': {
               px: 1.2,
             },
@@ -177,8 +187,8 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
           sx={{
             minWidth: 820,
             border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 1,
+            borderColor: '#E0E0E0',
+            borderRadius: '12px',
             overflow: 'hidden',
             borderCollapse: 'separate',
             borderSpacing: 0,
@@ -213,8 +223,11 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
                     '& td': {
                       borderColor: 'divider',
                     },
+                    '&:nth-of-type(odd)': {
+                      bgcolor: '#FAFAFA',
+                    },
                     '&:hover': {
-                      bgcolor: 'action.hover',
+                      bgcolor: '#FFF7ED',
                     },
                   }}
                 >
@@ -230,10 +243,10 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
                         sx={{
                           width: 38,
                           height: 38,
-                          bgcolor: 'primary.main',
+                          bgcolor: '#F45100',
                           color: '#ffffff',
                           fontSize: 13,
-                          fontWeight: 800,
+                          fontWeight: 700,
                         }}
                       >
                         {getInitials(name)}
@@ -244,7 +257,7 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
                           sx={{
                             color: tokens.color.ink,
                             fontSize: 14,
-                            fontWeight: 800,
+                            fontWeight: 700,
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
@@ -279,9 +292,10 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
                         height: 30,
                         borderRadius: 999,
                         bgcolor: '#fff7ed',
-                        color: '#c2410c',
-                        border: '1px solid #fed7aa',
+                        color: '#F45100',
+                        border: '1px solid #FFCCBC',
                         fontSize: 12,
+                        fontWeight: 700,
                         '& .MuiChip-label': {
                           px: 1.2,
                           overflow: 'hidden',
@@ -305,7 +319,7 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
                           fontFamily: tokens.font.mono,
                           color: tokens.color.ink,
                           fontSize: 13,
-                          fontWeight: 800,
+                          fontWeight: 700,
                         }}
                       >
                         {formatNumber(volume)}
@@ -313,9 +327,9 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
 
                       <Typography
                         sx={{
-                          color: '#c2410c',
+                          color: '#F45100',
                           fontSize: 12,
-                          fontWeight: 800,
+                          fontWeight: 700,
                         }}
                       >
                         {percent}%
@@ -328,6 +342,10 @@ export function UsersProductivityTable({ users }: UsersProductivityTableProps) {
                       sx={{
                         height: 7,
                         borderRadius: 999,
+                        bgcolor: '#FFEDD5',
+                        '& .MuiLinearProgress-bar': {
+                          bgcolor: '#FF6D00',
+                        },
                       }}
                     />
                   </TableCell>

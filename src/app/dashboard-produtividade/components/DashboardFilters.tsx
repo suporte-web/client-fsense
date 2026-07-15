@@ -101,21 +101,27 @@ function getTeamName(team: TeamItem) {
 const fieldSx = {
   '& .MuiOutlinedInput-root': {
     height: 48,
+    borderRadius: '12px',
+    color: '#4D4D4D',
 
     '&.Mui-disabled': {
       bgcolor: '#F8FAFC',
     },
+
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#DADADA',
+    },
   },
 
   '& .MuiSelect-icon': {
-    color: '#64748B',
+    color: '#6B6B6B',
   },
 };
 
 const menuPaperSx = {
   mt: 0.8,
   maxHeight: 340,
-  borderRadius: 1,
+  borderRadius: 1.25,
   border: '1px solid',
   borderColor: 'divider',
   boxShadow: '0 16px 40px rgba(15, 23, 42, 0.12)',
@@ -222,6 +228,9 @@ export function DashboardFilters({
       component="section"
       sx={{
         ...dashboardPanelSx,
+        borderRadius: '12px',
+        borderLeft: '4px solid #FF4B0B',
+        boxShadow: 'none',
         overflow: 'visible',
       }}
     >
@@ -264,16 +273,15 @@ export function DashboardFilters({
             <Box
               sx={{
                 ...dashboardIconBoxSx,
-                width: 46,
-                height: 46,
-                color: '#FFFFFF',
-                background:
-                  'linear-gradient(135deg, #FB923C 0%, #EA580C 100%)',
-                boxShadow:
-                  '0 8px 20px rgba(234, 88, 12, 0.22)',
+                width: 54,
+                height: 54,
+                borderRadius: '10px',
+                color: '#FF4B0B',
+                bgcolor: '#FFEEE6',
+                border: 0,
               }}
             >
-              <FilterAltIcon sx={{ fontSize: 23 }} />
+              <FilterAltIcon sx={{ fontSize: 24 }} />
             </Box>
 
             <Box>
@@ -286,7 +294,7 @@ export function DashboardFilters({
                     xs: 16,
                     md: 17,
                   },
-                  fontWeight: 800,
+                  fontWeight: 700,
                   lineHeight: 1.25,
                 }}
               >
@@ -296,7 +304,7 @@ export function DashboardFilters({
               <Typography
                 sx={{
                   mt: 0.35,
-                  color: '#64748B',
+                  color: '#4D4D4D',
                   fontSize: {
                     xs: 12,
                     sm: 12.5,
@@ -327,13 +335,13 @@ export function DashboardFilters({
               variant="outlined"
               sx={{
                 height: 34,
-                bgcolor: 'background.paper',
-                borderColor: 'divider',
-                color: 'text.secondary',
+                bgcolor: '#FFEEE6',
+                borderColor: '#FFD8C8',
+                color: '#FF4B0B',
                 fontSize: 12,
 
                 '& .MuiChip-icon': {
-                  color: '#64748B',
+                  color: '#FF4B0B',
                   ml: 1,
                 },
               }}
@@ -384,9 +392,9 @@ export function DashboardFilters({
             <Typography
               sx={{
                 mb: 0.9,
-                color: '#334155',
-                fontSize: 12.5,
-                fontWeight: 800,
+                color: '#4D4D4D',
+                fontSize: 13,
+                fontWeight: 700,
               }}
             >
               Período
@@ -429,7 +437,7 @@ export function DashboardFilters({
                     xs: 'none',
                     sm: 'block',
                   },
-                  color: '#64748B',
+                  color: '#4D4D4D',
                   fontSize: 12.5,
                   fontWeight: 700,
                   flexShrink: 0,
@@ -476,7 +484,7 @@ export function DashboardFilters({
                 <InputAdornment position="start">
                   <GroupsOutlinedIcon
                     sx={{
-                      color: '#94A3B8',
+                      color: '#6B6B6B',
                       fontSize: 19,
                     }}
                   />
@@ -522,7 +530,7 @@ export function DashboardFilters({
                 <InputAdornment position="start">
                   <PersonOutlineOutlinedIcon
                     sx={{
-                      color: '#94A3B8',
+                      color: '#6B6B6B',
                       fontSize: 19,
                     }}
                   />
@@ -559,12 +567,16 @@ export function DashboardFilters({
             sx={{
               height: 48,
               px: 2.2,
+              borderRadius: '12px',
               minWidth: {
                 xs: '100%',
                 md: 154,
               },
               bgcolor: '#FFFFFF',
+              borderColor: '#FF4B0B',
+              color: '#FF4B0B',
               fontSize: 12.5,
+              fontWeight: 700,
               whiteSpace: 'nowrap',
 
               '& .MuiButton-startIcon': {
@@ -572,7 +584,9 @@ export function DashboardFilters({
               },
 
               '&:hover': {
-                boxShadow: '0 8px 20px rgba(234, 88, 12, 0.10)',
+                bgcolor: '#FFEEE6',
+                borderColor: '#FF4B0B',
+                boxShadow: '0 4px 12px rgba(255, 75, 11, 0.14)',
               },
 
               '&.Mui-disabled': {

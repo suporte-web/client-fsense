@@ -16,25 +16,28 @@ export const dashboardTokens = {
       bar: '#F97316',
       dark: '#9A3412',
     },
+    info: { bg: '#EFF6FF', border: '#BFDBFE', text: '#1D4ED8', bar: '#3B82F6' },
+    warning: { bg: '#FEF3C7', border: '#FDE68A', text: '#92400E', bar: '#F59E0B' },
+    danger: { bg: '#FEF2F2', border: '#FECACA', text: '#991B1B', bar: '#EF4444' },
+    success: { bg: '#E1F5EE', border: '#9FE1CB', text: '#085041', bar: '#10B981' },
+    neutral: { bg: '#F8FAFC', border: '#E2E8F0', text: '#475569', bar: '#94A3B8' },
     flex: { bg: '#FFEDD5', text: '#C2410C', bar: '#FB923C' },
     fixed: { bg: '#FFF7ED', text: '#EA580C', bar: '#F97316' },
-    danger: { bg: '#FEF2F2', border: '#FECACA', text: '#991B1B' },
-    success: { bg: '#E1F5EE', border: '#9FE1CB', text: '#085041' },
   },
   font: {
-    display: "'Space Grotesk', 'Inter', sans-serif",
-    body: "'Inter', sans-serif",
-    mono: "'IBM Plex Mono', 'Roboto Mono', monospace",
+    display: '"Roboto", "Helvetica", "Arial", sans-serif',
+    body: '"Roboto", "Helvetica", "Arial", sans-serif',
+    mono: '"Roboto", "Helvetica", "Arial", sans-serif',
   },
   radius: {
-    card: 8,
+    card: 10,
     pill: 20,
   },
 } as const;
 
 export const dashboardPanelSx = {
   borderColor: 'divider',
-  borderRadius: 1,
+  borderRadius: 1.25,
   bgcolor: 'background.paper',
   boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)',
 } as const;
@@ -42,7 +45,7 @@ export const dashboardPanelSx = {
 export const dashboardIconBoxSx = {
   width: 42,
   height: 42,
-  borderRadius: 1,
+  borderRadius: 1.25,
   bgcolor: dashboardTokens.color.primary.bg,
   color: dashboardTokens.color.primary.main,
   display: 'grid',

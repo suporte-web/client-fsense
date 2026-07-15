@@ -82,10 +82,10 @@ function DayBar({ weekday, start, end, maxFlexibleDuration, accent }: DayBarProp
         alignItems: 'center',
         gap: 1.25,
         p: 1,
-        borderRadius: 1,
-        bgcolor: isOff ? '#ffffff' : '#fff7ed',
+        borderRadius: '10px',
+        bgcolor: isOff ? '#ffffff' : '#FFF7ED',
         border: '1px solid',
-        borderColor: isOff ? 'divider' : '#ffedd5',
+        borderColor: isOff ? '#E0E0E0' : '#FFCCBC',
       }}
     >
       <Typography
@@ -103,7 +103,7 @@ function DayBar({ weekday, start, end, maxFlexibleDuration, accent }: DayBarProp
         sx={{
           position: 'relative',
           height: 8,
-          bgcolor: isOff ? 'transparent' : '#ffedd5',
+          bgcolor: isOff ? 'transparent' : '#FFEDD5',
           borderRadius: 999,
           overflow: 'hidden',
         }}
@@ -218,6 +218,8 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
     <Card
       sx={{
         ...dashboardPanelSx,
+        borderRadius: '12px',
+        boxShadow: 'none',
         overflow: 'hidden',
       }}
     >
@@ -241,18 +243,21 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
             <Box
               sx={{
                 ...dashboardIconBoxSx,
-                width: 48,
-                height: 48,
+                width: 54,
+                height: 54,
+                borderRadius: '10px',
+                bgcolor: '#FFEEE6',
+                color: '#FF4B0B',
               }}
             >
-              <AccessTimeIcon sx={{ fontSize: 23 }} />
+              <AccessTimeIcon sx={{ fontSize: 24 }} />
             </Box>
 
             <Box sx={{ minWidth: 0, maxWidth: 320 }}>
               <Typography
                 sx={{
                   fontFamily: tokens.font.display,
-                  fontWeight: 800,
+                  fontWeight: 700,
                   fontSize: 20,
                   color: tokens.color.ink,
                   letterSpacing: 0,
@@ -265,7 +270,7 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
               <Typography
                 variant="body2"
                 sx={{
-                  color: tokens.color.muted,
+                  color: '#4D4D4D',
                   fontSize: 13,
                   mt: 0.75,
                   lineHeight: 1.5,
@@ -283,9 +288,9 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
                 alignItems: 'center',
                 gap: 1.5,
                 p: 2,
-                borderRadius: 1,
-                bgcolor: '#fff7ed',
-                border: '1px solid #fed7aa',
+                borderRadius: '10px',
+                bgcolor: '#FFF7ED',
+                border: '1px solid #FFCCBC',
               }}
             >
               <CircularProgress size={20} sx={{ color: '#f97316' }} />
@@ -299,7 +304,7 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
             <Box
               sx={{
                 p: 2,
-                borderRadius: 1,
+                borderRadius: '10px',
                 bgcolor: tokens.color.danger.bg,
                 border: `1px solid ${tokens.color.danger.border}`,
               }}
@@ -329,14 +334,14 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
             <Box
               sx={{
                 p: 2.5,
-                borderRadius: 1,
-                bgcolor: '#fff7ed',
-                border: '1px solid #fed7aa',
+                borderRadius: '10px',
+                bgcolor: '#FFF7ED',
+                border: '1px solid #FFCCBC',
               }}
             >
               <Typography
                 variant="body2"
-                sx={{ fontWeight: 800, color: '#c2410c' }}
+                sx={{ fontWeight: 700, color: '#F45100' }}
               >
                 Colaborador PJ sem jornada cadastrada
               </Typography>
@@ -355,15 +360,15 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
             <Box
               sx={{
                 p: 2.5,
-                borderRadius: 1,
-                bgcolor: '#fff7ed',
-                border: '1px dashed #fdba74',
+                borderRadius: '12px',
+                bgcolor: '#FFF7ED',
+                border: '1px dashed #FFB074',
                 textAlign: 'center',
               }}
             >
               <Typography
                 variant="body2"
-                sx={{ fontWeight: 800, color: tokens.color.ink }}
+                sx={{ fontWeight: 700, color: tokens.color.ink }}
               >
                 {userId ? 'Colaborador sem jornada vinculada' : 'Nenhum colaborador selecionado'}
               </Typography>
@@ -408,11 +413,11 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
                     width: '100%',
                     gap: 1.75,
                     p: { xs: 2, md: 2.5 },
-                    borderRadius: 1,
+                    borderRadius: '12px',
                     bgcolor: '#ffffff',
                     border: '1px solid',
-                    borderColor: 'divider',
-                    boxShadow: '0 6px 18px rgba(15, 23, 42, 0.045)',
+                    borderColor: '#E0E0E0',
+                    boxShadow: 'none',
                   }}
                 >
                   <Box
@@ -422,7 +427,7 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
                       right: -48,
                       width: 120,
                       height: 120,
-                      borderRadius: 1,
+                      borderRadius: '12px',
                       bgcolor: accentSet.bg,
                       opacity: 0.8,
                     }}
@@ -450,7 +455,7 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
                         <Typography
                           sx={{
                             fontFamily: tokens.font.display,
-                            fontWeight: 800,
+                            fontWeight: 700,
                             fontSize: 15,
                             color: tokens.color.ink,
                           }}
@@ -476,8 +481,8 @@ export function JornadasCard({ userId, userName }: JornadasCardProps) {
                         sx={{
                           bgcolor: accentSet.bg,
                           color: accentSet.text,
-                          border: '1px solid #fed7aa',
-                          fontWeight: 800,
+                          border: '1px solid #FFCCBC',
+                          fontWeight: 700,
                           fontSize: 12,
                           height: 24,
                         }}

@@ -25,13 +25,6 @@ type ActivitiesListProps = {
 
 type ActivityLike = ActivityItem & Record<string, unknown>;
 
-const accent = {
-  bg: '#fff7ed',
-  text: '#ea580c',
-  bar: '#f97316',
-  border: '#fed7aa',
-};
-
 function formatDuration(seconds?: number) {
   if (!seconds || seconds <= 0) {
     return '-';
@@ -280,6 +273,9 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
     <Card
       sx={{
         ...dashboardPanelSx,
+        borderRadius: '12px',
+        borderLeft: '4px solid #FF4B0B',
+        boxShadow: 'none',
         p: { xs: 2, md: 2.5 },
       }}
     >
@@ -303,9 +299,14 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
           <Box
             sx={{
               ...dashboardIconBoxSx,
+              width: 36,
+              height: 36,
+              borderRadius: '10px',
+              bgcolor: '#FFEEE6',
+              color: '#FF4B0B',
             }}
           >
-            <WebAssetIcon sx={{ fontSize: 21 }} />
+            <WebAssetIcon sx={{ fontSize: 20 }} />
           </Box>
 
           <Box>
@@ -315,7 +316,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                 fontFamily: tokens.font.display,
                 color: tokens.color.ink,
                 fontSize: 18,
-                fontWeight: 800,
+                fontWeight: 700,
               }}
             >
               Aplicativos e sites por pessoa
@@ -324,7 +325,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
             <Typography
               sx={{
                 mt: 0.35,
-                color: tokens.color.muted,
+                color: '#4D4D4D',
                 fontSize: 13,
               }}
             >
@@ -336,9 +337,12 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
         <Chip
           label={`${users.length} pessoa${users.length === 1 ? '' : 's'}`}
           sx={{
-            bgcolor: '#fff7ed',
-            color: '#c2410c',
-            border: '1px solid #fed7aa',
+            height: 30,
+            bgcolor: '#FFEEE6',
+            color: '#FF4B0B',
+            border: '1px solid #FFD8C8',
+            fontSize: 12,
+            fontWeight: 700,
           }}
         />
       </Box>
@@ -369,14 +373,15 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                 overflow: 'hidden',
                 p: 2,
                 border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: 1,
+                borderColor: '#E0E0E0',
+                borderRadius: '12px',
                 bgcolor: '#ffffff',
-                boxShadow: '0 6px 18px rgba(15, 23, 42, 0.045)',
-                transition: 'transform 180ms ease, box-shadow 180ms ease',
+                boxShadow: 'none',
+                transition: 'transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease',
                 '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 14px 34px rgba(15, 23, 42, 0.08)',
+                  transform: 'translateY(-1px)',
+                  borderColor: '#FFCCBC',
+                  boxShadow: '0 4px 12px rgba(255, 75, 11, 0.10)',
                 },
               }}
             >
@@ -387,9 +392,9 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                   right: -48,
                   width: 120,
                   height: 120,
-                  borderRadius: 1,
-                  bgcolor: '#fff7ed',
-                  opacity: 0.8,
+                  borderRadius: '12px',
+                  bgcolor: '#FFF7ED',
+                  opacity: 0.72,
                 }}
               />
 
@@ -408,7 +413,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                         fontFamily: tokens.font.display,
                         color: tokens.color.ink,
                         fontSize: 15,
-                        fontWeight: 800,
+                        fontWeight: 700,
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         whiteSpace: 'nowrap',
@@ -420,7 +425,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                     <Typography
                       sx={{
                         mt: 0.25,
-                        color: tokens.color.muted,
+                        color: '#4D4D4D',
                         fontSize: 12.5,
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
@@ -437,16 +442,16 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                       px: 1.2,
                       py: 0.6,
                       borderRadius: 999,
-                      bgcolor: '#fff7ed',
-                      border: '1px solid #fed7aa',
+                      bgcolor: '#FFF7ED',
+                      border: '1px solid #FFCCBC',
                     }}
                   >
                     <Typography
                       sx={{
                         fontFamily: tokens.font.mono,
-                        color: '#c2410c',
+                        color: '#F45100',
                         fontSize: 12.5,
-                        fontWeight: 800,
+                        fontWeight: 700,
                       }}
                     >
                       {formatDuration(user.totalDuration)}
@@ -459,6 +464,12 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                       value={jornadaPercent}
                       sx={{
                         mt: 1.3,
+                        height: 6,
+                        borderRadius: 999,
+                        bgcolor: '#FFEDD5',
+                        '& .MuiLinearProgress-bar': {
+                          bgcolor: '#FF6D00',
+                        },
                       }}
                     />
 
@@ -466,7 +477,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                   <Typography
                     sx={{
                       mt: 0.85,
-                      color: tokens.color.muted,
+                      color: '#4D4D4D',
                       fontSize: 12.5,
                       fontWeight: 700,
                     }}
@@ -510,9 +521,9 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                           width: 30,
                           height: 30,
                           flexShrink: 0,
-                          borderRadius: 1,
-                          bgcolor: accent.bg,
-                          color: accent.text,
+                          borderRadius: '8px',
+                          bgcolor: '#FFF3E0',
+                          color: '#F45100',
                           display: 'grid',
                           placeItems: 'center',
                         }}
@@ -524,7 +535,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                         sx={{
                           color: tokens.color.ink,
                           fontSize: 13.5,
-                          fontWeight: 600,
+                          fontWeight: 700,
                           overflow: 'hidden',
                           textOverflow: 'ellipsis',
                           whiteSpace: 'nowrap',
@@ -537,7 +548,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                     <Typography
                       sx={{
                         fontFamily: tokens.font.mono,
-                        color: tokens.color.muted,
+                        color: '#4D4D4D',
                         fontSize: 12,
                         whiteSpace: 'nowrap',
                       }}
@@ -571,9 +582,9 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
             sx={{
               gridColumn: '1 / -1',
               p: 4,
-              border: '1px dashed #fdba74',
-              borderRadius: 1,
-              bgcolor: '#fff7ed',
+              border: '1px dashed #FFB074',
+              borderRadius: '12px',
+              bgcolor: '#FFF7ED',
               textAlign: 'center',
             }}
           >
@@ -584,8 +595,8 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
                 mx: 'auto',
                 mb: 1.5,
                 borderRadius: '50%',
-                bgcolor: '#ffedd5',
-                color: '#f97316',
+                bgcolor: '#FFEEE6',
+                color: '#FF4B0B',
                 display: 'grid',
                 placeItems: 'center',
               }}
@@ -595,7 +606,7 @@ export function ActivitiesList({ activities, users: productivityUsers = [] }: Ac
 
             <Typography
               sx={{
-                fontWeight: 800,
+                fontWeight: 700,
                 color: tokens.color.ink,
                 fontSize: 15,
               }}

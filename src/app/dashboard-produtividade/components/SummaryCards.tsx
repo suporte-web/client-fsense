@@ -27,21 +27,27 @@ type SummaryCardsProps = {
 };
 
 const teamAccent = {
-  bg: '#fff7ed',
-  text: '#ea580c',
-  bar: '#f97316',
+  bg: '#E8F3EA',
+  text: '#2E7D32',
+  border: '#2E7D32',
 };
 
 const activityAccent = {
-  bg: '#ffedd5',
-  text: '#c2410c',
-  bar: '#fb923c',
+  bg: '#FFEEE6',
+  text: '#FF4B0B',
+  border: '#F57C00',
 };
 
 const idleAccent = {
-  bg: '#fef2f2',
-  text: '#dc2626',
-  bar: '#ef4444',
+  bg: '#E3F2FB',
+  text: '#0288D1',
+  border: '#0288D1',
+};
+
+const neutralAccent = {
+  bg: '#FFEEE6',
+  text: '#FF4B0B',
+  border: '#FF4B0B',
 };
 
 
@@ -152,8 +158,6 @@ export function SummaryCards({
     summary?.totalIdleUsers ??
     Math.max(totalUsers - activeUsers, 0);
 
-  const activeUserPercent = getPercent(activeUsers, totalUsers);
-
   const idleUserPercent =
     summary?.idleUserPercent !== undefined
       ? clampPercent(summary.idleUserPercent)
@@ -196,8 +200,6 @@ export function SummaryCards({
       label: 'Pessoas monitoradas',
       valueText: formatNumber(totalUsers),
       helper: `${activeUsers} com registros no período`,
-      progressLabel: `${activeUserPercent}% ativas`,
-      progressValue: activeUserPercent,
       icon: <GroupsIcon />,
       accent: teamAccent,
     },
@@ -205,17 +207,13 @@ export function SummaryCards({
       label: 'Equipes',
       valueText: formatNumber(totalTeams),
       helper: `${formatDecimal(averageUsersPerTeam)} pessoas por equipe`,
-      progressLabel: 'Base cadastrada',
-      progressValue: getPercent(totalTeams, Math.max(totalTeams, 1)),
       icon: <InsightsIcon />,
-      accent: teamAccent,
+      accent: neutralAccent,
     },
     {
       label: 'Atividades',
       valueText: formatNumber(totalActivities),
       helper: `${formatDecimal(averageActivities)} por pessoa`,
-      progressLabel: `${formatNumber(activities.length)} itens carregados`,
-      progressValue: getPercent(activities.length, Math.max(totalActivities, 1)),
       icon: <TimelineIcon />,
       accent: activityAccent,
     },
@@ -227,10 +225,6 @@ export function SummaryCards({
       helper: hasIdleTimeMetric
         ? `${idleTimePercent}% da jornada monitorada`
         : `${idleUsers} pessoas sem registros no período`,
-      progressLabel: hasIdleTimeMetric
-        ? `${idleUsers} pessoas sem registro`
-        : 'Aguardando tempo parado da API',
-      progressValue: idleTimePercent,
       icon: <PauseCircleOutlinedIcon />,
       accent: idleAccent,
     },
@@ -253,63 +247,84 @@ export function SummaryCards({
           key={card.label}
           sx={{
             ...dashboardPanelSx,
-            minHeight: 150,
-            p: 2.5,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 2,
+            minHeight: 174,
+            p: 2.25,
+            borderRadius: '12px',
+            borderLeft: `4px solid ${card.accent.border}`,
+            boxShadow: 'none',
+            overflow: 'hidden',
+            transition: 'border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease',
+            '&:hover': {
+              borderColor: card.accent.border,
+              boxShadow: `0 4px 12px ${card.accent.border}33`,
+              transform: 'translateY(-1px)',
+            },
           }}
         >
-          <Box sx={{ minWidth: 0, flex: 1 }}>
-            <Typography
-              sx={{
-                color: '#4b5563',
-                fontSize: 15,
-                fontWeight: 800,
-              }}
-            >
-              {card.label}
-            </Typography>
-
-            <Typography
-              sx={{
-              mt: 1,
-              fontFamily: tokens.font.mono,
-              color: '#0f172a',
-              fontSize: { xs: 34, md: 40 },
-              lineHeight: 1,
-              fontWeight: 900,
-              letterSpacing: 0,
-              }}
-            >
-              {card.valueText}
-            </Typography>
-
-            <Typography
-              sx={{
-                mt: 1.4,
-                color: '#6b7280',
-                fontSize: 14,
-              }}
-            >
-              {card.helper}
-            </Typography>
-          </Box>
-
           <Box
             sx={{
-              ...dashboardIconBoxSx,
-              width: 64,
-              height: 64,
-              color: tokens.color.primary.main,
-              bgcolor: tokens.color.primary.bg,
-              '& svg': {
-                fontSize: 28,
-              },
+              width: '100%',
+              minWidth: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 1.5,
             }}
           >
-            {card.icon}
+            <Box sx={{ minWidth: 0, pr: 1 }}>
+              <Typography
+                sx={{
+                  color: '#4D4D4D',
+                  fontSize: 16,
+                  fontWeight: 700,
+                  lineHeight: 1.35,
+                }}
+              >
+                {card.label}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.8,
+                  fontFamily: tokens.font.body,
+                  color: '#000000',
+                  fontSize: { xs: 36, md: 40 },
+                  lineHeight: 1.05,
+                  fontWeight: 700,
+                  letterSpacing: 0,
+                }}
+              >
+                {card.valueText}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 1.4,
+                  color: '#4D4D4D',
+                  fontSize: 14,
+                  lineHeight: 1.45,
+                }}
+              >
+                {card.helper}
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                ...dashboardIconBoxSx,
+                width: 54,
+                height: 54,
+                borderRadius: '10px',
+                color: card.accent.text,
+                bgcolor: card.accent.bg,
+                border: 0,
+                '& svg': {
+                  fontSize: 24,
+                },
+              }}
+            >
+              {card.icon}
+            </Box>
           </Box>
         </Card>
       ))}
